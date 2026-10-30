@@ -53,7 +53,7 @@ The entire platform—including MySQL, Redis, Kafka, Spring Boot backend, and Re
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/vaultpay.git
+git clone https://github.com/your-username/VaultPay.git
 cd vaultpay
 
 # 2. Start all services
