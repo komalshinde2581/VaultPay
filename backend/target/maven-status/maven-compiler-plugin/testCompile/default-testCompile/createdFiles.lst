@@ -1,0 +1,3 @@
+com\vaultpay\service\FraudRuleEngineTest.class
+com\vaultpay\service\LedgerServiceTest.class
+com\vaultpay\service\TransferServiceTest.class

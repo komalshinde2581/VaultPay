@@ -1,0 +1,62 @@
+# Local Development Profile - Zero External Dependencies (No MySQL/Redis/Kafka required)
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vaultpay-backend
+
+  datasource:
+    url: jdbc:h2:mem:vaultpay_local;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1;CASE_INSENSITIVE_IDENTIFIERS=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+  flyway:
+    enabled: false
+
+  cache:
+    type: none
+
+  data:
+    redis:
+      enabled: false
+      repositories:
+        enabled: false
+
+  kafka:
+    enabled: false
+    listener:
+      auto-startup: false
+    admin:
+      fail-on-error: false
+      fatal-if-broker-not-available: false
+
+vaultpay:
+  jwt:
+    secret: 4c7365637572655f7661756c747061795f66696e746563685f6a77745f7365637265745f6b65795f32303236
+    access-token-expiration-ms: 86400000
+    refresh-token-expiration-ms: 604800000
+  fraud:
+    large-transfer-threshold: 10000.00
+    rapid-transfer-count: 5
+    rapid-transfer-window-minutes: 10
+    daily-velocity-limit: 25000.00
+  beneficiary:
+    cooling-period-hours: 24
+    initial-transfer-limit: 1000.00
+  outbox:
+    relay-interval-ms: 60000
